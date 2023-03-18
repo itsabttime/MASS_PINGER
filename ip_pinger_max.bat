@@ -19,13 +19,14 @@ powershell -c "write-host low range is recommended. `t`t LogBook is Saved in Sam
 CHOICE /C TF /N /M "MAINTAIN LOG......... (T)RUE (F)ALSE"
 IF %errorlevel%==1 ( SET WRITE_LOG=TRUE) else ( SET WRITE_LOG=FALSE)
 for /f "delims=" %%a in  ('wmic os get localdatetime /value') do for /f "tokens=1,2 delims=^=." %%i in ("%%a") do set dater=%%j&
+title Main Window
 if "%WRITE_LOG%"=="TRUE" goto there
 if "%WRITE_LOG%"=="FALSE" goto here
 :here 
-for /l %%i in (1,1,%RANGE%) do start cmd /c "PING -n 1 -w %wait% %PREFIX_RANGE%.%%i&&(mode 30,10&color 4A&ECHO OFF&CLS&ECHO %PREFIX_RANGE%.%%i&PAUSE >NUL)"
+for /l %%i in (1,1,%RANGE%) do echo.!pinging! : %PREFIX_RANGE%.%%i&start cmd /c "PING -n 1 -w %wait% %PREFIX_RANGE%.%%i&&(mode 30,10&color 4A&ECHO OFF&CLS&ECHO %PREFIX_RANGE%.%%i&PAUSE >NUL)"
 goto eof
 :there
-for /l %%i in (1,1,%RANGE%) do start cmd /c "PING -n 1 -w %wait% %PREFIX_RANGE%.%%i&&(mode 30,10&color 4A&ECHO OFF&CLS&title %PREFIX_RANGE%.%%i&CLS&ECHO.PLEASE WAIT&ECHO.&ECHO.DO NOT CLOSE&ECHO.&TIMEOUT %%i&powershell -c "Add-Content -Path LOGBOOK.%random%.BOOK.%dater%.txt -Value \"ip address:`t %PREFIX_RANGE%.%%i is UP\""&&echo. || echo.%prefix_range%.%%i>>LOGFAILSTATUS%random%.BOOK.%dater%.txt)"
+for /l %%i in (1,1,%RANGE%) do echo.sending to: %PREFIX_RANGE%.%%i& start cmd /c "PING -n 1 -w %wait% %PREFIX_RANGE%.%%i&&(mode 30,10&color 4A&ECHO OFF&CLS&title %PREFIX_RANGE%.%%i&CLS&ECHO.PLEASE WAIT&ECHO.&ECHO.DO NOT CLOSE&ECHO.&TIMEOUT %%i&powershell -c "Add-Content -Path LOGBOOK.%random%.BOOK.%dater%.txt -Value \"ip address:`t %PREFIX_RANGE%.%%i is UP\""&&echo. || echo.%prefix_range%.%%i>>LOGFAILSTATUS%random%.BOOK.%dater%.txt)"
 goto loop
 ENDLOCAL
 SETLOCAL
