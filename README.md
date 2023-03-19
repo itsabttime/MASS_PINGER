@@ -10,4 +10,4 @@
   
 You Can Now Change the Prefix_range to your own..value
 
-![<img src="https://raw.githubusercontent.com/itsjstme/MASS_PINGER/main/Screenshot%20(23).png"  width="100">
+![<img src="https://raw.githubusercontent.com/itsjstme/MASS_PINGER/main/Screenshot%20(23).png"  width="70">
