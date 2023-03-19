@@ -3,6 +3,7 @@
 ! ENJOY THE SHOW!! ENJOY THE SHOW!! ENJOY THE SHOW!! ENJOY THE SHOW!! ENJOY THE SHOW!! ENJOY THE SHOW!
 ```
 # reliabely  mass  pings windows ip ranges and logs them x X
+# pleas elemenate the junk values, run it twice!!
 <h2> Right-Click On Batch File to edit it</h2>
   
 ![Alt text](https://raw.githubusercontent.com/itsjstme/MASS_PINGER/main/DEMO.png)
