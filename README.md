@@ -8,5 +8,5 @@
   
 ![Alt text](https://raw.githubusercontent.com/itsjstme/MASS_PINGER/main/DEMO.png)
   
-You Can Change the Prefix_range to your own..value
+You Can Now Change the Prefix_range to your own..value
 
