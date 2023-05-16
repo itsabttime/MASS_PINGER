@@ -17,6 +17,7 @@ ECHO.enter wait_time Recommended min.200 (ms):%wait%
 echo.Pinging...&echo.&echo.&echo.&echo.
 powershell -c "write-host low range is recommended. `t`t LogBook is Saved in Same Directory."
 CHOICE /C TF /N /M "MAINTAIN LOG......... (T)RUE (F)ALSE"
+if "%wait%"=="" set wait=200
 IF %errorlevel%==1 ( SET WRITE_LOG=TRUE) else ( SET WRITE_LOG=FALSE)
 for /f "delims=" %%a in  ('wmic os get localdatetime /value') do for /f "tokens=1,2 delims=^=." %%i in ("%%a") do set dater=%%j&
 title Main Window
