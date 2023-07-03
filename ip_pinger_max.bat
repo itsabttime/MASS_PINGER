@@ -3,7 +3,13 @@ for /f "skip=1 tokens=*" %%i in ('certutil -hashfile .\"%~nx0" md5') do set cryt
 :Z
 ECHO.FILE VERSION!%CRYTOKEY%!
 ECHO.--------------------------------------------------------------------
-set PREFIX_RANGE=192.168.1
+:Y
+set PREFIX_RANGE=
+ECHO.|set /p=PREFIX_RANGE=(192.168.1/default):
+set /p PREFIX_RANGE=
+if "%PREFIX_RANGE%"=="" set PREFIX_RANGE=192.168.1
+for /f %%i in ('powershell -c "'%PREFIX_RANGE%' -match '^\d{0,1}\d{0,1}\d{0,1}[.]\d{0,1}\d{0,1}\d{0,1}\.\d{0,1}\d{0,1}\d{0,1}$'"') do set state=%%i
+if "%state%"=="False" echo. ...Try Again!!&goto :Y
 :loop
 ECHO.|set /p=enter RANGE max (1-:
 set /p RANGE=
